@@ -15,6 +15,16 @@ variables:
   buildConfiguration: 'Release'
 
 steps:
+- task: AzureResourceManagerTemplateDeployment@3
+  inputs:
+    deploymentScope: 'Resource Group'
+    azureResourceManagerConnection: 'Visual Studio Enterprise with MSDN(7954e9f0-64af-46f9-806b-4b0abd4a6f44)'
+    subscriptionId: '7954e9f0-64af-46f9-806b-4b0abd4a6f44'
+    action: 'Create Or Update Resource Group'
+    resourceGroupName: 'AZUKSProdRG001'
+    location: 'UK South'
+    templateLocation: 'Linked artifact'
+    deploymentMode: 'Incremental'
 - task: NuGetToolInstaller@1
 
 - task: NuGetCommand@2
